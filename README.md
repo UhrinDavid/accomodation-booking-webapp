@@ -1,2 +1,2 @@
 # accomodation-booking-webapp
-VAII_semestralna_praca
+Web aplication - semester project.
