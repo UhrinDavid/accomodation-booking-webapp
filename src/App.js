@@ -6,12 +6,12 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import LoginPage from "views/LoginPage/LoginPage.js";
-import SignUpPage from "views/LoginPage/SignUpPage.js";
+import LoginPage from "views/LoginPage.js";
+import SignUpPage from "views/SignUpPage.js";
 import { ThemeProvider } from '@material-ui/core';
 import { theme } from 'Theme';
-// import Error404Page from "views/LoginPage/Error404Page.js";
-// import HomePage from "views/LoginPage/HomePage.js";
+// import Error404Page from "views/Error404Page.js";
+// import HomePage from "views/HomePage.js";
 
 function App(props) {
   return (
