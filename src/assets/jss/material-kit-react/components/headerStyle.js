@@ -9,7 +9,7 @@ import {
   roseColor,
   transition,
   boxShadow,
-  drawerWidth
+  drawerWidth,
 } from "assets/jss/material-kit-react.js";
 
 const headerStyle = {
@@ -61,11 +61,8 @@ const headerStyle = {
     padding: "8px 16px",
     letterSpacing: "unset",
     "&:hover,&:focus": {
-      color: "inherit",
-      background: "transparent"
-    }
-  },
-  titleLink: {
+      background: "rgba(53, 122, 56, 0.3)",
+    },
     textDecoration: "none",
   },
   appResponsive: {

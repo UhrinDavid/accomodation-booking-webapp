@@ -41,19 +41,15 @@ const headerLinksStyle = theme => ({
     position: "relative",
     padding: "0.9375rem",
     fontWeight: "400",
-    fontSize: "12px",
-    textTransform: "uppercase",
+    fontSize: "16px",
     borderRadius: "3px",
     lineHeight: "20px",
-    textDecoration: "none",
     margin: "0px",
     display: "inline-flex",
+    textDecoration: "none",
     "&:hover,&:focus": {
       color: "inherit",
-      background: "rgba(200, 200, 200, 0.2)"
-    },
-    navLinkText: {
-      textDecoration: "none",
+      background: "rgba(53, 122, 56, 0.3)",
     },
     [theme.breakpoints.down("sm")]: {
       width: "calc(100% - 30px)",

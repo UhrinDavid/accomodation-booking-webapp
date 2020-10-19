@@ -16,7 +16,8 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import image from "assets/images/main_background.jpg";
 import { AccountCircle, Lock } from "@material-ui/icons";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(
+  styles);
 
 export default function LoginPage() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
@@ -51,7 +52,7 @@ export default function LoginPage() {
                       }}
                       inputProps={{
                         type: "text",
-                        endAdornment: (
+                        startAdornment: (
                           <InputAdornment position="start">
                             <AccountCircle className={classes.inputIconsColor} />
                           </InputAdornment>
@@ -66,7 +67,7 @@ export default function LoginPage() {
                       }}
                       inputProps={{
                         type: "password",
-                        endAdornment: (
+                        startAdornment: (
                           <InputAdornment position="start">
                             <Lock className={classes.inputIconsColor} />
                           </InputAdornment>
@@ -75,7 +76,7 @@ export default function LoginPage() {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
+                    <Button default color="primary" size="lg">
                       Log in!
                     </Button>
                   </CardFooter>

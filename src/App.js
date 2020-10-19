@@ -22,6 +22,7 @@ function App(props) {
           absolute
           brand="Best booking"
           rightLinks={<HeaderLinks />}
+          color="primary"
         />
           <Switch>
             {/* <Route exact path="/">
