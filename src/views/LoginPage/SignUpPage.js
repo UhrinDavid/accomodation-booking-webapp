@@ -43,7 +43,7 @@ export default function LoginPage(props) {
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
                   <CardHeader color="primary" className={classes.cardHeader}>
-                    <h3>Login</h3>
+                    <h3>Signup</h3>
                   </CardHeader>
                   <CardBody>
                     <CustomInput
@@ -109,7 +109,7 @@ export default function LoginPage(props) {
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <Button simple color="primary" size="lg">
-                      Log in
+                      Sign up!
                     </Button>
                   </CardFooter>
                 </form>

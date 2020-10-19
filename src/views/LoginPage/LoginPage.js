@@ -76,7 +76,7 @@ export default function LoginPage() {
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <Button simple color="primary" size="lg">
-                      Log in
+                      Log in!
                     </Button>
                   </CardFooter>
                 </form>
