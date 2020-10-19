@@ -9,14 +9,8 @@ import { Link, NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
-
-// @material-ui/icons
-import { Apps, CloudDownload } from "@material-ui/icons";
 
 // core components
-import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
-import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 
@@ -27,22 +21,18 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
-        <Button
-          color="transparent"
-          target="_blank"
-          className={classes.navLink}
-        >
-          <NavLink to="/login" className={classes.navLinkText}>Log in</NavLink>
-        </Button>
+          <NavLink  to="/login" 
+            className={classes.navLink}
+          >
+            Log in
+          </NavLink>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Button
-          color="transparent"
-          target="_blank"
-          className={classes.navLink}
-        >
-          <NavLink to="/signup" className={classes.navLinkText}>Sign up</NavLink>
-        </Button>
+          <NavLink  to="/signup" 
+            className={classes.navLink}
+          >
+            Sign up
+          </NavLink>
       </ListItem>
     </List>
   );

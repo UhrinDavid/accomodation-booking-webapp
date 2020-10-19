@@ -8,7 +8,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
 // @material-ui/icons
@@ -61,9 +60,12 @@ export default function Header(props) {
     [classes.absolute]: absolute,
     [classes.fixed]: fixed
   });
-  const brandComponent = <Button className={classes.title}>
-                            <NavLink to="/" className={classes.titleLink}>{brand}</NavLink>
-                          </Button>;
+  const brandComponent = <NavLink  to="/" 
+                                      className={classes.title} 
+                                      activeClassName={classes.activeTitle}
+                            >
+                                    {brand}
+                          </NavLink>;
   return (
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>
@@ -111,7 +113,7 @@ export default function Header(props) {
 }
 
 Header.defaultProp = {
-  color: "white"
+  color: "primary"
 };
 
 Header.propTypes = {

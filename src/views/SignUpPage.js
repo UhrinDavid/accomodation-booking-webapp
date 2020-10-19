@@ -14,7 +14,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 
-import styles from "assets/jss/material-kit-react/views/loginPage.js";
+import styles from "assets/jss/material-kit-react/views/signUpPage.js";
 
 import image from "assets/images/main_background.jpg";
 import { AccountCircle, Lock } from "@material-ui/icons";
@@ -54,7 +54,7 @@ export default function LoginPage(props) {
                       }}
                       inputProps={{
                         type: "text",
-                        endAdornment: (
+                        startAdornment: (
                           <InputAdornment position="start">
                             <AccountCircle className={classes.inputIconsColor} />
                           </InputAdornment>
@@ -69,7 +69,7 @@ export default function LoginPage(props) {
                       }}
                       inputProps={{
                         type: "email",
-                        endAdornment: (
+                        startAdornment: (
                           <InputAdornment position="start">
                             <Email className={classes.inputIconsColor} />
                           </InputAdornment>
@@ -84,7 +84,7 @@ export default function LoginPage(props) {
                       }}
                       inputProps={{
                         type: "password",
-                        endAdornment: (
+                        startAdornment: (
                           <InputAdornment position="start">
                             <Lock className={classes.inputIconsColor} />
                           </InputAdornment>
@@ -99,7 +99,7 @@ export default function LoginPage(props) {
                       }}
                       inputProps={{
                         type: "password",
-                        endAdornment: (
+                        startAdornment: (
                           <InputAdornment position="start">
                             <Lock className={classes.inputIconsColor} />
                           </InputAdornment>
@@ -108,7 +108,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
+                    <Button default color="primary" size="lg">
                       Sign up!
                     </Button>
                   </CardFooter>
