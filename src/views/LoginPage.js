@@ -2,9 +2,6 @@ import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
-// @material-ui/icons
-import Email from "@material-ui/icons/Email";
-// core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
@@ -16,12 +13,12 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
-import image from "assets/img/bg7.jpg";
+import image from "assets/images/main_background.jpg";
 import { AccountCircle, Lock } from "@material-ui/icons";
 
 const useStyles = makeStyles(styles);
 
-export default function LoginPage(props) {
+export default function LoginPage() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
     setCardAnimation("");
@@ -62,38 +59,8 @@ export default function LoginPage(props) {
                       }}
                     />
                     <CustomInput
-                      labelText="Email"
-                      id="email"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{
-                        type: "email",
-                        endAdornment: (
-                          <InputAdornment position="start">
-                            <Email className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        )
-                      }}
-                    />
-                    <CustomInput
                       labelText="Password"
                       id="password"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{
-                        type: "password",
-                        endAdornment: (
-                          <InputAdornment position="start">
-                            <Lock className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        )
-                      }}
-                    />
-                    <CustomInput
-                      labelText="Repeat Password"
-                      id="repeatPassword"
                       formControlProps={{
                         fullWidth: true
                       }}
@@ -109,7 +76,7 @@ export default function LoginPage(props) {
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <Button simple color="primary" size="lg">
-                      Log in
+                      Log in!
                     </Button>
                   </CardFooter>
                 </form>
