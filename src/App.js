@@ -12,7 +12,7 @@ import { ThemeProvider } from '@material-ui/core';
 import { theme } from 'Theme';
 import { RoomPreview } from 'views/RoomPreview';
 // import Error404Page from "views/Error404Page.js";
-// import HomePage from "views/HomePage.js";
+ import {LandingPage} from "views/LandingPage.js";
 
 function App(props) {
   return (
@@ -27,13 +27,16 @@ function App(props) {
         />
           <Switch>
             <Route exact path="/">
-              <RoomPreview/>
+              <LandingPage/>
             </Route>
             <Route exact path="/login">
               <LoginPage/>
             </Route>
             <Route exact path="/signup">
               <SignUpPage/>
+            </Route>
+            <Route exact path="/roompreview-example">
+              <RoomPreview/>
             </Route>
             {/* <Route path="/">
               <Error404Page/>
