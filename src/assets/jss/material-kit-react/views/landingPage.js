@@ -39,7 +39,8 @@ const signupPageStyle = {
     minWidth: "100px"
   },
   topBar: {
-    width: "100%"
+    width: "100%",
+    justifyContent: "center"
   },
 };
 

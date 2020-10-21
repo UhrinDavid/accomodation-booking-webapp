@@ -20,7 +20,7 @@ export const LandingPage = (props) => {
     return (
       <div className={classes.container}>
           <GridContainer className={classes.topBar}>
-            <GridItem xs={12} sm={6} md={4} >
+            <GridItem xs={12} sm={4} md={4} >
                 <CustomInput
                     className={classes.search}
                     labelText="Search"
