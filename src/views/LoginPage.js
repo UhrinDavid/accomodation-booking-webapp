@@ -54,7 +54,7 @@ export default function LoginPage() {
                         type: "text",
                         startAdornment: (
                           <InputAdornment position="start">
-                            <AccountCircle className={classes.inputIconsColor} />
+                            <AccountCircle />
                           </InputAdornment>
                         )
                       }}
@@ -69,7 +69,7 @@ export default function LoginPage() {
                         type: "password",
                         startAdornment: (
                           <InputAdornment position="start">
-                            <Lock className={classes.inputIconsColor} />
+                            <Lock />
                           </InputAdornment>
                         )
                       }}
