@@ -9,24 +9,31 @@ const signupPageStyle = {
     color: "#FFFFFF",
     display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   card: {
-    maxWidth: "100%",
-    maxHeight: "300px"
+    maxWidth: "95%",
+    maxHeight: "400px",
+  },
+  cardBody: {
+    overflow: "hidden",
+    paddingTop: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    lineHeight: 1.3,
   },
   description: {
     color:"#000000",
-    overflow: "hidden",
     marginTop: 0,
   },
-  image: {
-    maxWidth: "100%",
-    height: "auto"
+  media: {
+    maxHeight: "200px",
+    borderRadius: "6px 6px 0px 0px"
   },
   cardHeader: {
     width: "100%",
     marginTop: 0,
+    maxHeight: "20%",
   }
 };
 
