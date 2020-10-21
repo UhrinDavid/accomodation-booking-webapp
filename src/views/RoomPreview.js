@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "assets/jss/material-kit-react/views/roomPreview.js";
-import { List, ListItem, makeStyles } from "@material-ui/core";
+import {List, ListItem, makeStyles } from "@material-ui/core";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
-import image from "assets/images/room/bedroom-490779_640.jpg"
+import StyledButton from "components/CustomButtons/Button.js"
+import image from "assets/images/room/bedroom-490779_640.jpg";
+
 
 const useStyles = makeStyles(styles);
 
@@ -41,6 +43,7 @@ export const RoomPreview = (props) => {
                   <p className={classes.text}><b>Toilet &amp; shower</b></p>
                 </ListItem>
               </List>
+              <StyledButton default color="primary" size="lg">Book now</StyledButton>
             </GridItem>
             <GridItem xs={12} sm={12} md={12}>
               <p className={classes.textDescription}>The young man wanted a role model. 
