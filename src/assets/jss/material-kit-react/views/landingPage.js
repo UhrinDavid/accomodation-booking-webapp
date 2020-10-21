@@ -34,7 +34,13 @@ const signupPageStyle = {
     width: "100%",
     marginTop: 0,
     maxHeight: "20%",
-  }
+  },
+  search: {
+    minWidth: "100px"
+  },
+  topBar: {
+    width: "100%"
+  },
 };
 
 export default signupPageStyle;
