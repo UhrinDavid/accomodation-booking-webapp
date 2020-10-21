@@ -10,6 +10,7 @@ import LoginPage from "views/LoginPage.js";
 import SignUpPage from "views/SignUpPage.js";
 import { ThemeProvider } from '@material-ui/core';
 import { theme } from 'Theme';
+import { RoomPreview } from 'views/RoomPreview';
 // import Error404Page from "views/Error404Page.js";
 // import HomePage from "views/HomePage.js";
 
@@ -25,9 +26,9 @@ function App(props) {
           color="primary"
         />
           <Switch>
-            {/* <Route exact path="/">
-              <HomePage/>
-            </Route> */}
+            <Route exact path="/">
+              <RoomPreview/>
+            </Route>
             <Route exact path="/login">
               <LoginPage/>
             </Route>

@@ -37,7 +37,7 @@ export default function LoginPage() {
       >
         <div className={classes.container}>
           <GridContainer justify="center">
-            <GridItem xs={10} sm={10} md={4}>
+            <GridItem xs={10} sm={8} md={4}>
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
                   <CardHeader color="primary" className={classes.cardHeader}>

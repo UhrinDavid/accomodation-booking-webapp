@@ -56,21 +56,11 @@ const signupPageStyle = {
     padding: "20px 0",
     marginBottom: "15px"
   },
-  divider: {
-    marginTop: "30px",
-    marginBottom: "0px",
-    textAlign: "center"
-  },
   cardFooter: {
     paddingTop: "0rem",
     border: "0",
     borderRadius: "6px",
     justifyContent: "center !important"
-  },
-  socialLine: {
-    marginTop: "1rem",
-    textAlign: "center",
-    padding: "0"
   },
 };
 
