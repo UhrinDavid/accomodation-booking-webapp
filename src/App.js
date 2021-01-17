@@ -1,6 +1,6 @@
 import Header from 'components/Header/Header';
 import HeaderLinks from 'components/Header/HeaderLinks';
-import React from 'react';
+import React, { useState }  from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,11 +10,13 @@ import LoginPage from "views/LoginPage.js";
 import SignUpPage from "views/SignUpPage.js";
 import { ThemeProvider } from '@material-ui/core';
 import { theme } from 'Theme';
-import { RoomPreview } from 'views/RoomPreview';
+import RoomPreview  from 'views/RoomPreview';
 // import Error404Page from "views/Error404Page.js";
  import {LandingPage} from "views/LandingPage.js";
 
 function App(props) {
+  const [accessToken, setAccessToken] = useState("");
+
   return (
     <Router >
       <ThemeProvider theme={theme}>
@@ -27,16 +29,16 @@ function App(props) {
         />
           <Switch>
             <Route exact path="/">
-              <LandingPage/>
+              <LandingPage accessToken={accessToken}/>
             </Route>
             <Route exact path="/login">
-              <LoginPage/>
+              <LoginPage setAccessToken={setAccessToken}/>
             </Route>
             <Route exact path="/signup">
-              <SignUpPage/>
+              <SignUpPage />
             </Route>
             <Route exact path="/roompreview-example">
-              <RoomPreview/>
+              <RoomPreview accessToken={accessToken}/>
             </Route>
             {/* <Route path="/">
               <Error404Page/>

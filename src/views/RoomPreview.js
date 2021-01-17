@@ -9,7 +9,7 @@ import image from "assets/images/room/bedroom-490779_640.jpg";
 
 const useStyles = makeStyles(styles);
 
-export const RoomPreview = (props) => {
+const RoomPreview = (props) => {
     const classes = useStyles();
     
     return (
@@ -61,3 +61,5 @@ export const RoomPreview = (props) => {
           </GridContainer>
       </div>);
 }
+
+export default RoomPreview;

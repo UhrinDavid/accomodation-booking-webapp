@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -15,16 +15,32 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 import image from "assets/images/main_background.jpg";
 import { AccountCircle, Lock } from "@material-ui/icons";
+import { signIn } from "api/apis";
 
 const useStyles = makeStyles(
   styles);
 
-export default function LoginPage() {
+export default function LoginPage(props) {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
     setCardAnimation("");
   }, 700);
   const classes = useStyles();
+  const [username, setUsername]=useState("");
+  const [password, setPassword]=useState("");
+
+  const { setAccessToken } = props;
+
+  const handleSubmit= (e) => {
+    e.preventDefault();
+    signIn(username, password).then(response => {
+      setAccessToken(response.access);
+      console.log(response.access);
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
   return (
     <div>
       <div
@@ -39,12 +55,13 @@ export default function LoginPage() {
           <GridContainer justify="center">
             <GridItem xs={10} sm={8} md={4}>
               <Card className={classes[cardAnimaton]}>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={handleSubmit}>
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h3>Login</h3>
                   </CardHeader>
                   <CardBody>
                     <CustomInput
+                      onChange={(e) => setUsername(e.target.value)}
                       labelText="Username"
                       id="first"
                       formControlProps={{
@@ -60,6 +77,7 @@ export default function LoginPage() {
                       }}
                     />
                     <CustomInput
+                      onChange={(e) => setPassword(e.target.value)}
                       labelText="Password"
                       id="password"
                       formControlProps={{
@@ -76,7 +94,7 @@ export default function LoginPage() {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button default color="primary" size="lg">
+                    <Button default color="primary" size="lg" type="submit">
                       Log in!
                     </Button>
                   </CardFooter>

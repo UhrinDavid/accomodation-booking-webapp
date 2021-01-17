@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -18,6 +18,7 @@ import styles from "assets/jss/material-kit-react/views/signUpPage.js";
 
 import image from "assets/images/main_background.jpg";
 import { AccountCircle, Lock } from "@material-ui/icons";
+import { register } from "api/apis";
 
 const useStyles = makeStyles(styles);
 
@@ -27,6 +28,19 @@ export default function LoginPage(props) {
     setCardAnimation("");
   }, 700);
   const classes = useStyles();
+  // value names must match /register api format
+  const [username, setUserName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setRepeatPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    register({username, first_name, last_name, email, password, password2});
+  }
+
   return (
     <div>
       <div
@@ -41,14 +55,15 @@ export default function LoginPage(props) {
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={handleSubmit}>
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h3>Signup</h3>
                   </CardHeader>
                   <CardBody>
                     <CustomInput
+                      onChange={(e) => setUserName(e.target.value)}
                       labelText="Username"
-                      id="first"
+                      id="username"
                       formControlProps={{
                         fullWidth: true
                       }}
@@ -62,6 +77,39 @@ export default function LoginPage(props) {
                       }}
                     />
                     <CustomInput
+                      onChange={(e) => setFirstName(e.target.value)}
+                      labelText="First name"
+                      id="firstName"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      inputProps={{
+                        type: "text",
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <AccountCircle className={classes.inputIconsColor} />
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                    <CustomInput
+                      onChange={(e) => setLastName(e.target.value)}
+                      labelText="Last name"
+                      id="lastName"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      inputProps={{
+                        type: "text",
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <AccountCircle className={classes.inputIconsColor} />
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                    <CustomInput
+                      onChange={(e) => setEmail(e.target.value)}
                       labelText="Email"
                       id="email"
                       formControlProps={{
@@ -77,6 +125,7 @@ export default function LoginPage(props) {
                       }}
                     />
                     <CustomInput
+                      onChange={(e) => setPassword(e.target.value)}
                       labelText="Password"
                       id="password"
                       formControlProps={{
@@ -92,6 +141,7 @@ export default function LoginPage(props) {
                       }}
                     />
                     <CustomInput
+                      onChange={(e) => setRepeatPassword(e.target.value)}
                       labelText="Repeat Password"
                       id="repeatPassword"
                       formControlProps={{
@@ -108,7 +158,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button default color="primary" size="lg">
+                    <Button default color="primary" size="lg" type="submit">
                       Sign up!
                     </Button>
                   </CardFooter>
