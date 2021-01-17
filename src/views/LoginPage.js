@@ -29,15 +29,15 @@ export default function LoginPage(props) {
   const [username, setUsername]=useState("");
   const [password, setPassword]=useState("");
 
-  const { setAccessToken } = props;
+  const { setAccessToken, addSnackBar } = props;
 
   const handleSubmit= (e) => {
     e.preventDefault();
     signIn(username, password).then(response => {
       setAccessToken(response.access);
-      console.log(response.access);
+      addSnackBar("Login sucessful!", "success");
     }).catch(error => {
-      console.log(error);
+      addSnackBar("Login failed!", "danger");
     })
   }
 

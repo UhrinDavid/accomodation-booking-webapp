@@ -39,6 +39,7 @@ export default function LoginPage(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     register({username, first_name, last_name, email, password, password2});
+    window.location.href('/login');
   }
 
   return (
