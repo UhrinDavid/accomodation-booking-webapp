@@ -14,6 +14,7 @@ const signupPageStyle = {
   card: {
     maxWidth: "95%",
     maxHeight: "400px",
+    minHeight: "400px",
   },
   cardBody: {
     overflow: "hidden",
@@ -35,12 +36,12 @@ const signupPageStyle = {
     marginTop: 0,
     maxHeight: "20%",
   },
-  search: {
-    minWidth: "100px"
+  cardFooter: {
+    marginLeft: "auto",
+    marginRight: "auto"
   },
-  topBar: {
-    width: "100%",
-    justifyContent: "center"
+  navLink: {
+    textDecoration: "none",
   },
 };
 

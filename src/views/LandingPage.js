@@ -1,43 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
-import { CardMedia, InputAdornment, makeStyles } from "@material-ui/core";
+import { CardMedia, makeStyles } from "@material-ui/core";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 import image from "assets/images/room/bedroom-490779_640.jpg";
 import CardBody from "components/Card/CardBody";
 import Card from "components/Card/Card.js";
-import SearchIcon from '@material-ui/icons/Search';
-import CustomInput from "components/CustomInput/CustomInput";
+import CardFooter from "components/Card/CardFooter";
+import Button from "components/CustomButtons/Button.js";
+import { getRooms } from "api/apis";
+import { NavLink } from "react-router-dom";
+import Pagination from '@material-ui/lab/Pagination';
+
 
 
 const useStyles = makeStyles(styles);
 
 export const LandingPage = (props) => {
     const classes = useStyles();
+    const [rooms, setRooms] = useState([]);
+    const [pages, setPages] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 9;
 
-    const items = Array.apply(null, {length: 10});
+    const { addSnackBar } = props;
+
+    useEffect(() => {
+          getRooms().then((response) => {
+            setPages(Math.ceil(response.length/itemsPerPage));
+            setRooms(response);
+          }).catch(error => {
+            addSnackBar("Server connection problems","danger");
+          });
+    },[addSnackBar],);
+
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+    }
     
     return (
       <div className={classes.container}>
-          <GridContainer className={classes.topBar}>
-            <GridItem xs={12} sm={4} md={4} >
-                <CustomInput
-                    className={classes.search}
-                    labelText="Search"
-                    id="search"
-                    inputProps={{
-                    type: "text",
-                    endAdornment: (
-                        <InputAdornment position="end">
-                        <SearchIcon  />
-                        </InputAdornment>
-                    )
-                    }}
-                />
-            </GridItem>
-          </GridContainer>
+          {rooms.length > 0 && 
           <GridContainer >
-              {items.map(() => <GridItem xs={12} sm={6} md={4} >
+              {rooms.slice((currentPage-1)*itemsPerPage,currentPage*itemsPerPage).map((room) => <GridItem xs={12} sm={6} md={4} key={room.id}>
                     <Card className={classes.card}>
                         <CardMedia
                             component="img"
@@ -46,18 +51,21 @@ export const LandingPage = (props) => {
                             title="Bedroom"
                         />
                         <CardBody className={classes.cardBody}>
-                            <p className={classes.description}>The red glint of paint sparkled under the sun. 
-                            He had dreamed of owning this car since he was ten, and that dream had become a reality less than a year ago. 
-                            It was his baby and he spent hours caring for it, pampering it, and fondling over it. 
-                            She knew this all too well, and that's exactly why she had taken a sludge hammer to it.</p>
-                            <p className={classes.description}>All he could think about was how it would all end. 
-                                There was still a bit of uncertainty in the equation, 
-                                but the basics were there for anyone to see. 
-                                No matter how much he tried to see the positive, it wasn't anywhere to be seen. 
-                                The end was coming and it wasn't going to be pretty.</p>
+                            <b>Capacity:</b> {room.capacity}<br/>
+                            <b>Price:</b> {room.price}€<br/><br/>
+                            {room.description.length > 190 ? `${room.description.slice(0,190)}...` : room.description}
                         </CardBody>
+                        <CardFooter className={classes.cardFooter}>
+                            <NavLink to={`roompreview/?roomID=${room.id}`} className={classes.navLink}>
+                             <Button default color="primary" size="sm">More</Button>
+                            </NavLink>
+                        </CardFooter>
                     </Card>
                 </GridItem>)}
-          </GridContainer>
+                <GridItem xs={12}  key="pagination" >
+                    <Pagination count={pages} onChange={handlePageChange} />
+                </GridItem>
+          </GridContainer>}
+          
       </div>);
 }

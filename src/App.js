@@ -45,7 +45,7 @@ function App(props) {
             <Route exact path="/signup">
               <SignUpPage addSnackBar={addSnackBar}/>
             </Route>
-            <Route exact path="/roompreview-example">
+            <Route  path="/roompreview">
               <RoomPreview accessToken={accessToken} addSnackBar={addSnackBar}/>
             </Route>
             {/* <Route path="/">

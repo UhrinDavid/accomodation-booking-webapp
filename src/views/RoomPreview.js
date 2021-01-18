@@ -1,64 +1,132 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "assets/jss/material-kit-react/views/roomPreview.js";
-import {List, ListItem, makeStyles } from "@material-ui/core";
+import {Input, List, ListItem, makeStyles } from "@material-ui/core";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 import StyledButton from "components/CustomButtons/Button.js"
 import image from "assets/images/room/bedroom-490779_640.jpg";
+import { getRoom, getRoomReservationDates, addReservation } from "api/apis";
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import jwt_decode from "jwt-decode";
+
 
 
 const useStyles = makeStyles(styles);
 
 const RoomPreview = (props) => {
     const classes = useStyles();
+    const [ room, setRoom ] = useState();
+    const [selectedDateFrom, setSelectedDateFrom] = useState(new Date());
+    const [selectedDateTo, setSelectedDateTo] = useState(new Date());
+    const [reservedDates, setReservedDates] = useState([]);
+    const [note, setNote] = useState();
+
+    const { addSnackBar, accessToken } = props;
+
+    useEffect(() => {
+      const roomID = window.location.href.split("=")[1];
+      Promise.all([getRoom(roomID), getRoomReservationDates(roomID)]).then((responses)  => {
+        setRoom(responses[0]);
+        setReservedDates(responses[1].map(reservation => {
+          let dateFrom = new Date(reservation.dateFrom)
+          dateFrom.setDate(dateFrom.getDate() - 1);
+          return {
+          "after": dateFrom,
+          "before": new Date(reservation.dateTo)
+        }}));
+      }).catch(error => {
+        addSnackBar("Server connection problems","danger");
+      });
+    },[addSnackBar, setRoom]);
+
+
+    const handleDayChangeFrom = (selectedDay) => {
+      setSelectedDateFrom(selectedDay);
+    }
+
+    const handleDayChangeTo = (selectedDay) => {
+      setSelectedDateTo(selectedDay);
+    }
+
+    const handleNoteChange = (event) => {
+      setNote(event.target.value);
+    }
+
+    const handleReservationSubmit = (e) => {
+      e.preventDefault();
+      addReservation({
+        roomID: room.id,
+        userID: jwt_decode(accessToken).user_id,
+        dateFrom: selectedDateFrom,
+        dateTo: selectedDateTo,
+        note: note,
+       }, accessToken);
+    }
     
     return (
       <div className={classes.container}>
+        {room &&
           <GridContainer >
-            <GridItem xs={12} sm={12} md={12}>
-              <h3 className={classes.heading}>Hotel Paradise, 2-bed room</h3>
-            </GridItem>
-          
             <GridItem xs={12} sm={8} md={6}>
               <img src={image} alt="Bedroom" className={classes.image}></img>
             </GridItem>
-            <GridItem xs={12} sm={4} md={6}>
-              <List className={classes.c}>
+            <GridItem xs={12} sm={4} md={6} >
+              <List >
                 <ListItem className={classes.specificationItem}>
-                  <p className={classes.text}><b>Room type: </b>2x single bed</p>
+                  <p className={classes.text}><b>Capacity: </b>{room.capacity}</p>
                 </ListItem>
                 <ListItem className={classes.specificationItem}>
-                  <p className={classes.text}><b>Number of beds: </b>2</p>
+                  <p className={classes.text}><b>Price: </b>{room.price}&euro;</p>
                 </ListItem>
                 <ListItem className={classes.specificationItem}>
-                  <p className={classes.text}><b>Room size: </b>23m<sup>2</sup></p>
-                </ListItem>
-                <ListItem className={classes.specificationItem}>
-                  <p className={classes.text}><b>Minimal price (1 night): </b>56&euro;</p>
-                </ListItem>
-                <ListItem className={classes.specificationItem}>
-                  <p className={classes.text}><b>Balcony</b></p>
-                </ListItem>
-                <ListItem className={classes.specificationItem}>
-                  <p className={classes.text}><b>Toilet &amp; shower</b></p>
+                  <p className={classes.text}><b>Room number: </b>{room.roomNumber}</p>
                 </ListItem>
               </List>
-              <StyledButton default color="primary" size="lg">Book now</StyledButton>
+              
+              <form onSubmit={handleReservationSubmit}>
+                  <GridContainer >
+                    <GridItem xs={12} >
+                      <DayPickerInput 
+                        component = {props => <Input {...props} className={classes.pickerInput} />}
+                        value={selectedDateFrom}
+                        onDayChange={handleDayChangeFrom}
+                        dayPickerProps={{
+                          selectedDays: selectedDateFrom,
+                          disabledDays:  reservedDates,
+                          className: classes.picker,
+                        }}
+                      />
+                    </GridItem>
+                    <GridItem xs={12} >
+                      <DayPickerInput 
+                        component = {props => <Input {...props}  className={classes.pickerInput}/>}
+                        value={selectedDateTo}
+                        onDayChange={handleDayChangeTo}
+                        dayPickerProps={{
+                          selectedDays: selectedDateTo,
+                          disabledDays:  reservedDates,
+                          className: classes.picker,
+                        }}
+                      />
+                    </GridItem>
+                    <GridItem xs={12} >
+                      <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Leave a note" 
+                        className={classes.note} onChange={handleNoteChange}/>;
+                    </GridItem>
+                  </GridContainer>
+                  <StyledButton default color="primary" size="lg" className={classes.button}
+                    type="submit">
+                    Book
+                  </StyledButton>
+              </form>
             </GridItem>
-            <GridItem xs={12} sm={12} md={12}>
-              <p className={classes.textDescription}>The young man wanted a role model. 
-                He looked long and hard in his youth, but that role model never materialized. 
-                His only choice was to embrace all the people in his life he didn't want to be like.</p>
-              <p className={classes.textDescription}>It had been her dream for years but Dana had failed to take any action toward making it come true. 
-                  There had always been a good excuse to delay or prioritize another project. 
-                  As she woke, she realized she was once again at a crossroads. 
-                  Would it be another excuse or would she finally find the courage to pursue her dream? 
-                  Dana rose and took her first step.</p>
-              <p className={classes.textDescription}>Don't be scared. The things out there that are unknown aren't scary in themselves. 
-                They are just unknown at the moment. Take the time to know them before you list them as scary. 
-                Then the world will be a much less scary place for you.</p>
+            <GridItem xs={12} sm={12} md={12} className={classes.text}>
+                {room.description}
             </GridItem>
           </GridContainer>
+        }
       </div>);
 }
 

@@ -36,9 +36,12 @@ export default function LoginPage(props) {
   const [password, setPassword] = useState("");
   const [password2, setRepeatPassword] = useState("");
 
+  const { addSnackBar } = props;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     register({username, first_name, last_name, email, password, password2});
+    addSnackBar("Sucessfuly registered!", "success");
     window.location.href('/login');
   }
 

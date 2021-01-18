@@ -35,7 +35,7 @@ export default function LoginPage(props) {
     e.preventDefault();
     signIn(username, password).then(response => {
       setAccessToken(response.access);
-      addSnackBar("Login sucessful!", "success");
+      window.history.back();
     }).catch(error => {
       addSnackBar("Login failed!", "danger");
     })

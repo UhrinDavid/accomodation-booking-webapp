@@ -52,7 +52,7 @@ export function getUserReservations(token) {
 }
 
 export function getRoomReservationDates(roomID) {
-  return fetchResource(`accomodation/reservation_dates/${roomID}`, {
+  return fetchResource(`accomodation/reservation_dates/${roomID}/`, {
     method: 'GET',
     headers: {
         "Content-Type": "application/json",
@@ -79,12 +79,13 @@ export function addReview(token) {
   });
 }
 
-// export function addReservation(token) {
-//   return fetchResource(`accomodation/reviews/`, {
-//     method: 'GET',
-//     headers: {
-//         "Content-Type": "application/json",
-//         "Authorization": `Bearer ${token}`,
-//     },
-//   });
-// }
+export function addReservation(bodyContent, token) {
+  return fetchResource(`accomodation/reviews/`, {
+    method: 'POST',
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+    },
+    body: bodyContent,
+  });
+}

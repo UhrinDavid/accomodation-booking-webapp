@@ -19,13 +19,6 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
-          <NavLink  to="/roompreview-example" 
-            className={classes.navLink}
-          >
-            Room preview
-          </NavLink>
-      </ListItem>
-      <ListItem className={classes.listItem}>
           <NavLink  to="/login" 
             className={classes.navLink}
           >

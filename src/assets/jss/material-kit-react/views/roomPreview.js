@@ -9,7 +9,8 @@ const signupPageStyle = {
     color: "#FFFFFF",
     display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    marginTop: "20px"
   },
   image: {
     maxWidth: "100%"
@@ -27,12 +28,25 @@ const signupPageStyle = {
     marginBottom: "0",
     textAllign: "left",
   },
-  heading: {
-    color:"#000000",
-  },
   textDescription: {
     color:"#000000",
     marginTop: "1vh",
+  },
+  button: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "20px",
+  },
+  picker: {
+    color: "#000000",
+  },
+  pickerInput: {
+    marginBottom: "10px"
+  },
+  note: {
+    marginTop: "10px",
+    marginRight: "auto",
+    width: "100%"
   }
 };
 
