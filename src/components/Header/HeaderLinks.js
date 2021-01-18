@@ -15,6 +15,7 @@ import { loggedIn } from "components/globalFuncs";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router-dom';
+import { deleteCookie } from "components/globalFuncs";
 
 const useStyles = makeStyles(styles);
 
@@ -25,6 +26,10 @@ const HeaderLinks = (props) => {
   props.history.listen((location, action) => {
     setIsLoggedIn(loggedIn());
   });
+
+  const handleLogout = () => {
+    deleteCookie("refresh");
+  }
 
   return (
     <List className={classes.list}>
@@ -51,7 +56,7 @@ const HeaderLinks = (props) => {
           </NavLink>
       </ListItem>}
       {isLoggedIn && <ListItem className={classes.listItem}>
-          <NavLink  to="/logout" 
+          <NavLink  to="/" onClick={handleLogout}
             className={classes.navLink}
           >
             <ExitToAppIcon className={classes.icon}/>

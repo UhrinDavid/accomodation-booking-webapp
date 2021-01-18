@@ -3,8 +3,7 @@ import HeaderLinks from 'components/Header/HeaderLinks';
 import React, { useState }  from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route
+  Switch
 } from "react-router-dom";
 import LoginPage from "views/LoginPage.js";
 import SignUpPage from "views/SignUpPage.js";
@@ -15,6 +14,9 @@ import RoomPreview  from 'views/RoomPreview';
  import {LandingPage} from "views/LandingPage.js";
 import SnackbarContent from 'components/Snackbar/SnackbarContent';
 import { loggedIn } from 'components/globalFuncs';
+import PublicRoute from 'views/routeTypes/PublicRoute';
+import AdminRoute from 'views/routeTypes/AdminRoute';
+import { AdminReservations } from 'views/AdminReservations';
 
 function App(props) {
   const [accessToken, setAccessToken] = useState("");
@@ -38,21 +40,17 @@ function App(props) {
         />
         {snackBar}
           <Switch>
-            <Route exact path="/">
-              <LandingPage accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>
-            </Route>
-            <Route exact path="/login">
-              <LoginPage setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>
-            </Route>
-            <Route exact path="/signup">
-              <SignUpPage addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>
-            </Route>
-            <Route  path="/roompreview">
-              <RoomPreview accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>
-            </Route>
-            {/* <Route path="/">
-              <Error404Page/>
-            </Route> */}
+            <PublicRoute exact path="/login" restricted isLoggedIn={isLoggedIn}
+              component={<LoginPage setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
+            <PublicRoute exact path="/signup" restricted isLoggedIn={isLoggedIn}
+              component={<SignUpPage addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
+            <PublicRoute  path="/roompreview" isLoggedIn={isLoggedIn}
+              component={<RoomPreview accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
+            <AdminRoute  exact path="/admin/reservations"  isLoggedIn={isLoggedIn}
+              component={<AdminReservations accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
+            <PublicRoute  path="/"  isLoggedIn={isLoggedIn}
+              component={<LandingPage accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
+            
           </Switch>
         </div>
       </ThemeProvider>

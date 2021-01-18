@@ -37,7 +37,7 @@ export default function LoginPage(props) {
     signIn(username, password).then(response => {
       let date = new Date(0);
       date.setUTCSeconds(jwt_decode(response.refresh).exp);
-      document.cookie = `refresh=${response.refresh};expires=${date.toUTCString()}`;
+      document.cookie = `refresh=${response.refresh};expires=${date.toUTCString()};path=/`;
       setAccessToken(response.access);
       window.history.back();
     }).catch(error => {

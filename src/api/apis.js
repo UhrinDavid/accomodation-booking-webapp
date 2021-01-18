@@ -63,6 +63,16 @@ export function getUserReservations(token, setAccessToken) {
   });
 }
 
+export function getReservations(token, setAccessToken) {
+  return fetchResource(`accomodation/reservations/`, {
+    method: 'GET',
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+    },
+  });
+}
+
 export function getRoomReservationDates(roomID) {
   return fetchResource(`accomodation/reservation_dates/${roomID}/`, {
     method: 'GET',
