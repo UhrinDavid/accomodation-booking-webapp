@@ -14,10 +14,12 @@ import RoomPreview  from 'views/RoomPreview';
 // import Error404Page from "views/Error404Page.js";
  import {LandingPage} from "views/LandingPage.js";
 import SnackbarContent from 'components/Snackbar/SnackbarContent';
+import { loggedIn } from 'components/globalFuncs';
 
 function App(props) {
   const [accessToken, setAccessToken] = useState("");
   const [snackBar, setSnackBar] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(loggedIn());
 
   // color "info", "success", "warning", "danger", "primary"
   const addSnackBar = (message, color) => {
@@ -31,22 +33,22 @@ function App(props) {
         <Header
           absolute
           brand="Best booking"
-          rightLinks={<HeaderLinks />}
+          rightLinks={<HeaderLinks isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}
           color="primary"
         />
         {snackBar}
           <Switch>
             <Route exact path="/">
-              <LandingPage accessToken={accessToken} addSnackBar={addSnackBar}/>
+              <LandingPage accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>
             </Route>
             <Route exact path="/login">
-              <LoginPage setAccessToken={setAccessToken} addSnackBar={addSnackBar}/>
+              <LoginPage setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>
             </Route>
             <Route exact path="/signup">
-              <SignUpPage addSnackBar={addSnackBar}/>
+              <SignUpPage addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>
             </Route>
             <Route  path="/roompreview">
-              <RoomPreview accessToken={accessToken} addSnackBar={addSnackBar}/>
+              <RoomPreview accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>
             </Route>
             {/* <Route path="/">
               <Error404Page/>

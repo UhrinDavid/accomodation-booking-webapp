@@ -35,7 +35,6 @@ const signupPageStyle = {
   button: {
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: "20px",
   },
   picker: {
     color: "#000000",
@@ -47,6 +46,12 @@ const signupPageStyle = {
     marginTop: "10px",
     marginRight: "auto",
     width: "100%"
+  },
+  labelError: {
+    color: "red"
+  },
+  labelClassic: {
+    color: "#000000"
   }
 };
 

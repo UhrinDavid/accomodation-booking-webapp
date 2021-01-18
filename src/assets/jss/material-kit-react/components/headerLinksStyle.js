@@ -92,7 +92,7 @@ const headerLinksStyle = theme => ({
   icons: {
     width: "20px",
     height: "20px",
-    marginRight: "3px"
+    marginRight: "10px"
   },
   socialIcons: {
     position: "relative",
@@ -110,6 +110,12 @@ const headerLinksStyle = theme => ({
   ...tooltip,
   marginRight5: {
     marginRight: "5px"
+  },
+  icon: {
+    marginLeft: "5px",
+    marginRight: "5px",
+    verticalAlign: "baseline",
+    fontSize: "20px"
   }
 });
 

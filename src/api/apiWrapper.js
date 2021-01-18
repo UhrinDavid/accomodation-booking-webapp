@@ -69,7 +69,6 @@ const fetchResource = (path, userOptions = {}) => {
       // HTTP unauthorized
       if (response.status === 401) {
         // Handle unauthorized requests
-        window.location.href('/login')
       }
 
       // Check for error HTTP error codes

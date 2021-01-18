@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useState } from "react";
 // react components for routing our app without refresh
 import {  NavLink } from "react-router-dom";
 
@@ -11,27 +11,55 @@ import ListItem from "@material-ui/core/ListItem";
 // core components
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
+import { loggedIn } from "components/globalFuncs";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { withRouter } from 'react-router-dom';
 
 const useStyles = makeStyles(styles);
 
-export default function HeaderLinks(props) {
+const HeaderLinks = (props) => {
   const classes = useStyles();
+  const {isLoggedIn, setIsLoggedIn} = props;
+
+  props.history.listen((location, action) => {
+    setIsLoggedIn(loggedIn());
+  });
+
   return (
     <List className={classes.list}>
-      <ListItem className={classes.listItem}>
+      {!isLoggedIn && <ListItem className={classes.listItem}>
           <NavLink  to="/login" 
             className={classes.navLink}
           >
             Log in
           </NavLink>
-      </ListItem>
-      <ListItem className={classes.listItem}>
+      </ListItem>}
+      {!isLoggedIn && <ListItem className={classes.listItem}>
           <NavLink  to="/signup" 
             className={classes.navLink}
           >
             Sign up
           </NavLink>
-      </ListItem>
+      </ListItem>}
+      {isLoggedIn && <ListItem className={classes.listItem}>
+          <NavLink  to="/profile" 
+            className={classes.navLink}
+          >
+            <AccountCircleIcon className={classes.icon}/>
+            Profile
+          </NavLink>
+      </ListItem>}
+      {isLoggedIn && <ListItem className={classes.listItem}>
+          <NavLink  to="/logout" 
+            className={classes.navLink}
+          >
+            <ExitToAppIcon className={classes.icon}/>
+            Log out
+          </NavLink>
+      </ListItem>}
     </List>
   );
 }
+
+export default withRouter(HeaderLinks);

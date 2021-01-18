@@ -16,6 +16,7 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import image from "assets/images/main_background.jpg";
 import { AccountCircle, Lock } from "@material-ui/icons";
 import { signIn } from "api/apis";
+import jwt_decode from "jwt-decode";
 
 const useStyles = makeStyles(
   styles);
@@ -34,6 +35,9 @@ export default function LoginPage(props) {
   const handleSubmit= (e) => {
     e.preventDefault();
     signIn(username, password).then(response => {
+      let date = new Date(0);
+      date.setUTCSeconds(jwt_decode(response.refresh).exp);
+      document.cookie = `refresh=${response.refresh};expires=${date.toUTCString()}`;
       setAccessToken(response.access);
       window.history.back();
     }).catch(error => {

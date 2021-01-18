@@ -43,6 +43,9 @@ const signupPageStyle = {
   navLink: {
     textDecoration: "none",
   },
+  pagination: {
+    marginBottom: "20px",
+  }
 };
 
 export default signupPageStyle;

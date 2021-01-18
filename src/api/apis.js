@@ -1,4 +1,6 @@
 import fetchResource from "./apiWrapper";
+import jwt_decode from "jwt-decode";
+import { getCookie } from "components/globalFuncs";
 
 export function signIn(username, password) {
     return fetchResource('token/', {
@@ -13,13 +15,23 @@ export function signIn(username, password) {
       });
 }
 
+export function refreshToken() {
+  return fetchResource('token/refresh/', {
+      method: 'POST',
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({refresh: getCookie("refresh")})
+    });
+}
+
 export function register(bodyContent) {
     return fetchResource('register/', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
         },
-        body: bodyContent,
+        body: JSON.stringify(bodyContent),
       });
 }
 
@@ -41,7 +53,7 @@ export function getRooms() {
   });
 }
 
-export function getUserReservations(token) {
+export function getUserReservations(token, setAccessToken) {
   return fetchResource(`accomodation/user_reservations/`, {
     method: 'GET',
     headers: {
@@ -69,9 +81,9 @@ export function getReviews() {
   });
 }
 
-export function addReview(token) {
+export function addReview(token,setAccessToken) {
   return fetchResource(`accomodation/reviews/`, {
-    method: 'GET',
+    method: 'POST',
     headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
@@ -80,12 +92,13 @@ export function addReview(token) {
 }
 
 export function addReservation(bodyContent, token) {
-  return fetchResource(`accomodation/reviews/`, {
-    method: 'POST',
-    headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-    },
-    body: bodyContent,
-  });
+    bodyContent.userID = jwt_decode(token).user_id;
+    return fetchResource(`accomodation/reservations/`, {
+      method: 'POST',
+      headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(bodyContent),
+    });
 }

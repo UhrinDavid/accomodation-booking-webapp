@@ -63,7 +63,7 @@ export const LandingPage = (props) => {
                     </Card>
                 </GridItem>)}
                 <GridItem xs={12}  key="pagination" >
-                    <Pagination count={pages} onChange={handlePageChange} />
+                    <Pagination count={pages} onChange={handlePageChange} className={classes.pagination}/>
                 </GridItem>
           </GridContainer>}
           
