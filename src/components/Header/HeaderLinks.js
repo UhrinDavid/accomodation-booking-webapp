@@ -16,6 +16,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router-dom';
 import { deleteCookie } from "components/globalFuncs";
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 const useStyles = makeStyles(styles);
 
@@ -33,6 +34,14 @@ const HeaderLinks = (props) => {
 
   return (
     <List className={classes.list}>
+      <ListItem className={classes.listItem}>
+          <NavLink  to="/reviews" 
+            className={classes.navLink}
+          >
+            <StarBorderIcon className={classes.icon}/>
+            Reviews
+          </NavLink>
+      </ListItem>
       {!isLoggedIn && <ListItem className={classes.listItem}>
           <NavLink  to="/login" 
             className={classes.navLink}

@@ -16,7 +16,7 @@ import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles(styles);
 
-export const LandingPage = (props) => {
+const LandingPage = (props) => {
     const classes = useStyles();
     const [rooms, setRooms] = useState([]);
     const [pages, setPages] = useState(1);
@@ -69,3 +69,5 @@ export const LandingPage = (props) => {
           
       </div>);
 }
+
+export default LandingPage;

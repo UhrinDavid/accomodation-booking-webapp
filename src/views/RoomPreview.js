@@ -113,7 +113,7 @@ const RoomPreview = (props) => {
                     </GridItem>
                     <GridItem xs={12} >
                       <DayPickerInput 
-                        component = {props => <Input {...props} className={classes.pickerInput}/>}
+                        component = {props => <Input {...props} required ={true} className={classes.pickerInput}/>}
                         value={selectedDateFrom}
                         onDayChange={handleDayChangeFrom}
                         dayPickerProps={{
@@ -128,7 +128,7 @@ const RoomPreview = (props) => {
                     </GridItem>
                     <GridItem xs={12} >
                       <DayPickerInput 
-                        component = {props => <Input {...props}  className={classes.pickerInput}/>}
+                        component = {props => <Input {...props}  required ={true} className={classes.pickerInput}/>}
                         value={selectedDateTo}
                         onDayChange={handleDayChangeTo}
                         dayPickerProps={{

@@ -72,6 +72,7 @@ export default function LoginPage(props) {
                         fullWidth: true
                       }}
                       inputProps={{
+                        required : true,
                         type: "text",
                         startAdornment: (
                           <InputAdornment position="start">
@@ -88,6 +89,7 @@ export default function LoginPage(props) {
                         fullWidth: true
                       }}
                       inputProps={{
+                        required : true,
                         type: "password",
                         startAdornment: (
                           <InputAdornment position="start">

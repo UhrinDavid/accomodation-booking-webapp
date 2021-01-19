@@ -42,7 +42,7 @@ export default function LoginPage(props) {
     e.preventDefault();
     register({username, first_name, last_name, email, password, password2});
     addSnackBar("Sucessfuly registered!", "success");
-    window.location.href('/login');
+    window.location.href = '/login';
   }
 
   return (
@@ -72,6 +72,7 @@ export default function LoginPage(props) {
                         fullWidth: true
                       }}
                       inputProps={{
+                        required : true,
                         type: "text",
                         startAdornment: (
                           <InputAdornment position="start">
@@ -88,6 +89,7 @@ export default function LoginPage(props) {
                         fullWidth: true
                       }}
                       inputProps={{
+                        required : true,
                         type: "text",
                         startAdornment: (
                           <InputAdornment position="start">
@@ -104,6 +106,7 @@ export default function LoginPage(props) {
                         fullWidth: true
                       }}
                       inputProps={{
+                        required : true,
                         type: "text",
                         startAdornment: (
                           <InputAdornment position="start">
@@ -120,6 +123,7 @@ export default function LoginPage(props) {
                         fullWidth: true
                       }}
                       inputProps={{
+                        required : true,
                         type: "email",
                         startAdornment: (
                           <InputAdornment position="start">
@@ -136,6 +140,7 @@ export default function LoginPage(props) {
                         fullWidth: true
                       }}
                       inputProps={{
+                        required : true,
                         type: "password",
                         startAdornment: (
                           <InputAdornment position="start">
@@ -152,6 +157,7 @@ export default function LoginPage(props) {
                         fullWidth: true
                       }}
                       inputProps={{
+                        required : true,
                         type: "password",
                         startAdornment: (
                           <InputAdornment position="start">

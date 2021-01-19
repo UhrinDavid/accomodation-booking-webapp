@@ -91,13 +91,14 @@ export function getReviews() {
   });
 }
 
-export function addReview(token,setAccessToken) {
+export function addReview(bodyContent, token) {
   return fetchResource(`accomodation/reviews/`, {
     method: 'POST',
     headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
     },
+    body: JSON.stringify(bodyContent),
   });
 }
 

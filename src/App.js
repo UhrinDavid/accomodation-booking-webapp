@@ -11,12 +11,13 @@ import {  ThemeProvider } from '@material-ui/core';
 import { theme } from 'Theme';
 import RoomPreview  from 'views/RoomPreview';
 // import Error404Page from "views/Error404Page.js";
- import {LandingPage} from "views/LandingPage.js";
+import LandingPage from "views/LandingPage.js";
+import Reviews from "views/Reviews.js";
 import SnackbarContent from 'components/Snackbar/SnackbarContent';
 import { loggedIn } from 'components/globalFuncs';
 import PublicRoute from 'views/routeTypes/PublicRoute';
-import AdminRoute from 'views/routeTypes/AdminRoute';
-import { AdminReservations } from 'views/AdminReservations';
+import PrivateRoute from 'views/routeTypes/PrivateRoute';
+
 
 function App(props) {
   const [accessToken, setAccessToken] = useState("");
@@ -46,8 +47,8 @@ function App(props) {
               component={<SignUpPage addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
             <PublicRoute  path="/roompreview" isLoggedIn={isLoggedIn}
               component={<RoomPreview accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
-            <AdminRoute  exact path="/admin/reservations"  isLoggedIn={isLoggedIn}
-              component={<AdminReservations accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
+            <PublicRoute path="/reviews" 
+               component={<Reviews accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
             <PublicRoute  path="/"  isLoggedIn={isLoggedIn}
               component={<LandingPage accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
             
