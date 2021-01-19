@@ -12,6 +12,7 @@ import { theme } from 'Theme';
 import RoomPreview  from 'views/RoomPreview';
 // import Error404Page from "views/Error404Page.js";
 import LandingPage from "views/LandingPage.js";
+import Reservations from "views/Reservations.js";
 import Reviews from "views/Reviews.js";
 import SnackbarContent from 'components/Snackbar/SnackbarContent';
 import { loggedIn } from 'components/globalFuncs';
@@ -49,9 +50,10 @@ function App(props) {
               component={<RoomPreview accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
             <PublicRoute path="/reviews" 
                component={<Reviews accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
+            <PrivateRoute exact path='/reservations' isLoggedIn={isLoggedIn}
+              component={<Reservations accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
             <PublicRoute  path="/"  isLoggedIn={isLoggedIn}
               component={<LandingPage accessToken={accessToken} setAccessToken={setAccessToken} addSnackBar={addSnackBar} isLoggedIn={isLoggedIn}/>}/>
-            
           </Switch>
         </div>
       </ThemeProvider>

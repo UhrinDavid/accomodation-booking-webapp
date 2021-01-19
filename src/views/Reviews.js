@@ -1,26 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "assets/jss/material-kit-react/views/reviews.js";
-import { CardMedia, Input, List, ListItem, ListItemAvatar, ListItemText, makeStyles, Paper, TextareaAutosize, Typography } from "@material-ui/core";
+import {  Input, List, ListItem, ListItemAvatar, ListItemText, makeStyles, Paper, TextareaAutosize, Typography } from "@material-ui/core";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
-import image from "assets/images/room/bedroom-490779_640.jpg";
-import CardBody from "components/Card/CardBody";
-import Card from "components/Card/Card.js";
-import CardFooter from "components/Card/CardFooter";
-import Button from "components/CustomButtons/Button.js";
-import { getRooms } from "api/apis";
 import Pagination from '@material-ui/lab/Pagination';
-import reviewsStyle from "assets/jss/material-kit-react/views/reviews";
 import { getReviews } from "api/apis";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
-import CustomInput from "components/CustomInput/CustomInput";
 import { addReview } from "api/apis";
-import jwt_decode from "jwt-decode";
 import { refreshToken } from "api/apis";
 import StyledButton from "components/CustomButtons/Button.js"
-import { getCookie } from "components/globalFuncs";
 
 
 

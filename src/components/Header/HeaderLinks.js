@@ -57,11 +57,11 @@ const HeaderLinks = (props) => {
           </NavLink>
       </ListItem>}
       {isLoggedIn && <ListItem className={classes.listItem}>
-          <NavLink  to="/profile" 
+          <NavLink  to="/reservations" 
             className={classes.navLink}
           >
             <AccountCircleIcon className={classes.icon}/>
-            Profile
+            Reservations
           </NavLink>
       </ListItem>}
       {isLoggedIn && <ListItem className={classes.listItem}>

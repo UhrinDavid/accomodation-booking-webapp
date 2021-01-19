@@ -53,7 +53,7 @@ export function getRooms() {
   });
 }
 
-export function getUserReservations(token, setAccessToken) {
+export function getUserReservations(token) {
   return fetchResource(`accomodation/user_reservations/`, {
     method: 'GET',
     headers: {
@@ -63,7 +63,7 @@ export function getUserReservations(token, setAccessToken) {
   });
 }
 
-export function getReservations(token, setAccessToken) {
+export function getReservations(token) {
   return fetchResource(`accomodation/reservations/`, {
     method: 'GET',
     headers: {
