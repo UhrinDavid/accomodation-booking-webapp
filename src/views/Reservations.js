@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "assets/jss/material-kit-react/views/reservations.js";
-import {  Box, makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,  } from "@material-ui/core";
+import {   makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,  } from "@material-ui/core";
 import { refreshToken } from "api/apis";
 import { getUserReservations } from "api/apis";
 import GridContainer from "components/Grid/GridContainer";
@@ -14,7 +14,7 @@ const Reservations = (props) => {
     const classes = useStyles();
     const [reservations, setReservations] = useState([]);
 
-    const { addSnackBar, isLoggedIn, setAccessToken, accessToken } = props;
+    const {  setAccessToken } = props;
 
     useEffect(() => {
         refreshToken().then (response => {
@@ -25,7 +25,7 @@ const Reservations = (props) => {
                 console.log(error);
             })
         });
-    },[setReservations],);
+    },[setReservations, setAccessToken],);
     
     return (
         <GridContainer className={classes.container}>

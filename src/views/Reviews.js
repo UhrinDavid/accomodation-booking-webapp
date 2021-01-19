@@ -26,7 +26,7 @@ const Reviews = (props) => {
     const [stars, setStars] = useState(0);
     const [openErrorStarLabel, setOpenErrorStarLabel] = useState(false);
 
-    const { addSnackBar, isLoggedIn, setAccessToken, accessToken } = props;
+    const { addSnackBar, isLoggedIn, setAccessToken } = props;
 
     useEffect(() => {
           getReviews().then((response) => {
