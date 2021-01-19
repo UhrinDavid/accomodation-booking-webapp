@@ -17,9 +17,49 @@ const reservationsStyle = {
       marginLeft: "auto",
       marginRight: "auto",
   },
-  headerCell: {
+  head: {
     backgroundColor: "#808080",
+    color: "#FFFFFF",
   },
+  rowUpcoming: {
+    backgroundColor: "#c0ff33",
+  },
+  rowActive: {
+    backgroundColor: "#feff5c",
+  },
+  rowPast: {
+    backgroundColor: "#ffa879"
+  },
+  legend: {
+    color: "#000000",
+    marginLeft: "auto",
+    marginRight: "auto",
+    display: "flex",
+    flexDirection: "row",
+    marginBottom: "5px"
+  },
+  rowUpcomingDiv: {
+    backgroundColor: "#c0ff33",
+    minWidth: "16px",
+    minHeight: "16px",
+    marginLeft: "10px",
+    marginRight: "5px"
+  },
+  rowActiveDiv: {
+    backgroundColor: "#feff5c",
+    minWidth: "16px",
+    minHeight: "16px",
+    marginLeft: "10px",
+    marginRight: "5px"
+  },
+  rowPastDiv: {
+    backgroundColor: "#ffa879",
+    minWidth: "16px",
+    minHeight: "16px",
+    marginLeft: "10px",
+    marginRight: "5px"
+  },
+
 };
 
 export default reservationsStyle;

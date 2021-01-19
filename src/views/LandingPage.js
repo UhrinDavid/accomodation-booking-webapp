@@ -3,7 +3,6 @@ import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import { CardMedia, makeStyles } from "@material-ui/core";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
-import image from "assets/images/room/bedroom-490779_640.jpg";
 import CardBody from "components/Card/CardBody";
 import Card from "components/Card/Card.js";
 import CardFooter from "components/Card/CardFooter";
@@ -44,10 +43,10 @@ const LandingPage = (props) => {
           <GridContainer >
               {rooms.slice((currentPage-1)*itemsPerPage,currentPage*itemsPerPage).map((room) => <GridItem xs={12} sm={6} md={4} key={room.id}>
                     <Card className={classes.card}>
-                        <CardMedia
+                        <CardMedia square
                             component="img"
                             className={classes.media}
-                            image={image}
+                            image={room.image}
                             title="Bedroom"
                         />
                         <CardBody className={classes.cardBody}>

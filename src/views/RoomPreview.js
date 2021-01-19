@@ -4,7 +4,6 @@ import {Input, List, ListItem, makeStyles } from "@material-ui/core";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 import StyledButton from "components/CustomButtons/Button.js"
-import image from "assets/images/room/bedroom-490779_640.jpg";
 import { getRoom, getRoomReservationDates, addReservation } from "api/apis";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
@@ -91,7 +90,7 @@ const RoomPreview = (props) => {
         {room &&
           <GridContainer >
             <GridItem xs={12} sm={8} md={6}>
-              <img src={image} alt="Bedroom" className={classes.image}></img>
+              <img src={room.image} alt="Bedroom" className={classes.image}></img>
             </GridItem>
             <GridItem xs={12} sm={4} md={6} >
               <List >
